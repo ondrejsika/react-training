@@ -4,6 +4,9 @@
     https://github.com/ondrejsika/react-training
 
 
+Example repository to this training is [ondrejsika/react-example](https://github.com/ondrejsika/react-example)
+
+
 ## Install Node.js & Yarn
 
 ### Mac
