@@ -53,3 +53,35 @@ yarn dev
 ```
 
 See <http://127.0.0.1:3000>
+
+Keep running, it will be updated automatically. Try it, change the `index.js`!
+
+## Create Simple Component
+
+Create file `./components/Hello.js`
+
+```js
+let Hello = (props) => {
+  return <>
+    <h1>Hello {props.name}</h1>
+  </>
+}
+
+export default Hello;
+```
+
+Use it in `index.js`
+
+```js
+import Hello from '../components/Hello'
+
+function Home() {
+  return <>
+    <Hello name='Zuz' />
+  </>;
+}
+
+export default Home;
+```
+
+and check it out <http://127.0.0.1:3000>
