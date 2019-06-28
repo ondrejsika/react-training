@@ -85,3 +85,23 @@ export default Home;
 ```
 
 and check it out <http://127.0.0.1:3000>
+
+
+## Add Styles to Component
+
+Update our hello component like that:
+
+```js
+let Hello = (props) => {
+  return <>
+    <h1 style={{
+      color: 'green',
+      backgroundColor: 'lightblue',
+    }}>Hello {props.name}</h1>
+  </>
+}
+```
+
+You can add styles using `style` property. Styles must be object, where key is camel case name of css property and value is string with its value.
+
+Check it out <http://127.0.0.1:3000>
