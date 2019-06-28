@@ -155,3 +155,83 @@ function Home() {
 
 Restart the server (because Next.js doesn't watch for changes is `next.config.js`) and see <http://127.0.0.1:3000>
 
+
+## Static Rendering
+
+You need to add pages you want to render statically to `next.config.js`:
+
+```js
+module.exports = {
+  exportPathMap: async function(defaultPathMap) {
+    return {
+      '/': { page: '/' },
+    };
+  }
+};
+```
+
+Add static build script to `package.json`:
+
+```
+{
+  "scripts": {
+    "static": "yarn run build && next static",
+  }
+}
+```
+
+Now you can build site using:
+
+```
+yarn build static
+```
+
+And see your statically builded website in `out/`.
+
+Dont forget to add the `out` to `.gitignore`.
+
+
+### Primer Components & Static Render
+
+If you're using Primer Components, you have to statically render CSS from primer components.
+
+Create file `pages/_document.js` which define low level HTML document behavior in Next.js. This file is taken drectly from Primer Repository https://github.com/primer/components/blob/master/pages/_document.js>.
+
+```js
+import Document from 'next/document'
+import { ServerStyleSheet } from 'styled-components'
+
+
+export default class MyDocument extends Document {
+  static async getInitialProps (ctx) {
+    const sheet = new ServerStyleSheet()
+    const originalRenderPage = ctx.renderPage
+
+    try {
+      ctx.renderPage = () =>
+        originalRenderPage({
+          enhanceApp: App => props => sheet.collectStyles(<App {...props} />)
+        })
+
+      const initialProps = await Document.getInitialProps(ctx)
+      return {
+        ...initialProps,
+        styles: (
+          <>
+            {initialProps.styles}
+            {sheet.getStyleElement()}
+          </>
+        )
+      }
+    } finally {
+      sheet.seal()
+    }
+  }
+}
+```
+
+Now, your pages are built properly. Try build again.
+
+```
+yarn run static
+```
