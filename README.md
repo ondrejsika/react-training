@@ -309,3 +309,51 @@ render() {
 Then, you can remove base styles from your pages.
 
 Check it out <http://127.0.0.1:3000>
+
+
+## Deploy to zeit.co
+
+### Install `now`
+
+```
+yarn global add now
+```
+
+### Create Now Config
+
+Create `now.json`:
+
+```json
+{
+  "version": 2,
+  "name": "react-example",
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@now/static-build",
+      "config": { "distDir": "out" }
+    }
+  ]
+}
+```
+
+and add script to `package.json`:
+
+```
+{
+  "scripts": {
+    "now-build": "yarn run static"
+  }
+}
+```
+
+### Deploy it
+
+Just call
+
+```
+now
+```
+
+See your deployment on Zeit, eg.: <https://react-example.ondrejsika.now.sh>
+
