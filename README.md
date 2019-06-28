@@ -272,3 +272,40 @@ module.exports = {
 Because you've edited Next.js config, you have to restart server.
 
 Then, check it out <http://127.0.0.1:3000/about-me>. You can also build static site.
+
+## Layout in `pages/_document.js` - Don't Repeat Yourself (DRY)
+
+Create method `MyDocument.render` in `_pages/_document.js`:
+
+Add imports
+
+```js
+import { Html, Head, Main, NextScript } from 'next/document';
+import { BaseStyles } from "@primer/components";
+```
+
+and method render, where you can define your layout code. Like that menu or `<BaseStyles>`.
+
+```js
+render() {
+  return (
+    <Html>
+      <Head>
+      </Head>
+      <body>
+        <BaseStyles>
+          <p>
+            <a href="/">Index</a> ~ <a href="/about-me">About me</a>
+          </p>
+          <Main />
+        </BaseStyles>
+        <NextScript />
+      </body>
+    </Html>
+  );
+}
+```
+
+Then, you can remove base styles from your pages.
+
+Check it out <http://127.0.0.1:3000>
