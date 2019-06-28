@@ -235,3 +235,40 @@ Now, your pages are built properly. Try build again.
 ```
 yarn run static
 ```
+
+
+## Second Page
+
+If you want create another page, you can create `pages/about-me.js`
+
+```js
+import { Box, BaseStyles } from "@primer/components";
+import Hello from '../components/Hello'
+
+export default () => {
+  return <>
+    <BaseStyles>
+      <Box width={[1/2]}>
+        <h1>About me</h1>
+      </Box>
+    </BaseStyles>
+  </>;
+}
+```
+
+You have to add that page also to `next.config.js`:
+
+```js
+module.exports = {
+  exportPathMap: async function(defaultPathMap) {
+    return {
+      '/': { page: '/' },
+      '/about-me': { page: '/about-me' },
+    };
+  }
+};
+```
+
+Because you've edited Next.js config, you have to restart server.
+
+Then, check it out <http://127.0.0.1:3000/about-me>. You can also build static site.
