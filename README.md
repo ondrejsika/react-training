@@ -20,6 +20,19 @@ brew install yarn
 yarn add next react react-dom
 ```
 
+## Add Next.js scripts to `package.json`
+
+```json
+{
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  }
+}
+```
+
+
 ## Create a First Page
 
 File `./pages/index.js`
@@ -32,17 +45,6 @@ function Home() {
 export default Home;
 ```
 
-## Add scripts to `package.json`
-
-```json
-{
-  "scripts": {
-    "dev": "next",
-    "build": "next build",
-    "start": "next start"
-  }
-}
-```
 
 ## Run App
 
