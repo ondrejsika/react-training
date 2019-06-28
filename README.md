@@ -105,3 +105,53 @@ let Hello = (props) => {
 You can add styles using `style` property. Styles must be object, where key is camel case name of css property and value is string with its value.
 
 Check it out <http://127.0.0.1:3000>
+
+
+## Add Primer Design System
+
+Primer is design system (like Bootstrap) by Github. See <https://primer.style>
+
+
+### Install Dependencies
+
+```
+yarn add styled-components @primer/components @primer/next-pages
+```
+
+### Create Next.js Config
+
+Create a file `next.config.js`:
+
+``` js
+module.exports = {};
+
+const withPages = require('@primer/next-pages/plugin')
+module.exports = withPages(module.exports)
+```
+
+We have to use primer plugin for Next.js
+
+### Use Primer Components
+
+Import Primer Components to `pages/index.js`:
+
+``` js
+import { Box, BaseStyles } from "@primer/components";
+```
+
+Use components
+
+```js
+function Home() {
+  return <>
+    <BaseStyles>
+      <Box width={[1/2]}>
+        <Hello name="Zuz" />
+      </Box>
+    </BaseStyles>
+  </>;
+}
+```
+
+Restart the server (because Next.js doesn't watch for changes is `next.config.js`) and see <http://127.0.0.1:3000>
+
