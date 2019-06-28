@@ -4,6 +4,16 @@
     https://github.com/ondrejsika/react-training
 
 
+## Install Node.js & Yarn
+
+### Mac
+
+```
+brew install node
+brew install yarn
+```
+
+
 ## Install Next.js & React
 
 ```
