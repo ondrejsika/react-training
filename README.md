@@ -198,7 +198,7 @@ Dont forget to add the `out` to `.gitignore`.
 
 If you're using Primer Components, you have to statically render CSS from primer components.
 
-Create file `pages/_document.js` which define low level HTML document behavior in Next.js. This file is taken drectly from Primer Repository https://github.com/primer/components/blob/master/pages/_document.js>.
+Create file `pages/_document.js` which define low level HTML document behavior in Next.js. This file is taken drectly from Primer Repository <https://github.com/primer/components/blob/master/pages/_document.js>.
 
 ```js
 import Document from 'next/document'
