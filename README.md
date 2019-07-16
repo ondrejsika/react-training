@@ -1,3 +1,5 @@
+Are you interested in this course? Send me email to <ondrej@ondejsika.com> and I can run this course in your company.
+
 # React Training
 
     2019 Ondrej Sika <ondrej@ondrejsika.com>
