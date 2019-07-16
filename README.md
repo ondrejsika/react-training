@@ -360,3 +360,60 @@ now
 
 See your deployment on Zeit, eg.: <https://react-example.ondrejsika.now.sh>
 
+## Add Images
+
+If you want to use images in Next.js you have to add [next-images](https://www.npmjs.com/package/next-images) plugin.
+
+### Install next-images plugin
+
+```
+yarn add next-images
+```
+
+### Add to `next.config.js`
+
+Add those lines to bottom of your `next.config.js`
+
+```js
+const withImages = require('next-images')
+module.exports = withImages(module.exports)
+```
+
+And restart your dev server.
+
+
+### Download Example Image
+
+```
+mkdir data
+curl -o data/nela.jpg https://raw.githubusercontent.com/ondrejsika/react-training/master/nela.jpg
+```
+
+### Use in Page
+
+Now, you can add images to your site using two similar ways.
+
+### Import Image
+
+At first, import image
+
+```js
+import nela_img from "../data/nela.jpg";
+```
+
+And use it
+
+```js
+<img src={nela_img} />
+```
+
+#### Require from JSX
+
+Just use require in JSX
+
+```js
+<img src={require('../data/nela.jpg')} />
+```
+
+Now, you can check it on <http://127.0.0.1:3000>
+
