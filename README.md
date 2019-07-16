@@ -40,7 +40,7 @@ yarn add next react react-dom
 
 File `./pages/index.js`
 
-```js
+```jsx
 function Home() {
   return <div>Welcome to Next.js!</div>;
 }
@@ -63,7 +63,7 @@ Keep running, it will be updated automatically. Try it, change the `index.js`!
 
 Create file `./components/Hello.js`
 
-```js
+```jsx
 let Hello = (props) => {
   return <>
     <h1>Hello {props.name}</h1>
@@ -75,7 +75,7 @@ export default Hello;
 
 Use it in `index.js`
 
-```js
+```jsx
 import Hello from '../components/Hello'
 
 function Home() {
@@ -94,7 +94,7 @@ and check it out <http://127.0.0.1:3000>
 
 Update our hello component like that:
 
-```js
+```jsx
 let Hello = (props) => {
   return <>
     <h1 style={{
@@ -144,7 +144,7 @@ import { Box, BaseStyles } from "@primer/components";
 
 Use components
 
-```js
+```jsx
 function Home() {
   return <>
     <BaseStyles>
@@ -163,7 +163,7 @@ Restart the server (because Next.js doesn't watch for changes is `next.config.js
 
 You need to add pages you want to render statically to `next.config.js`:
 
-```js
+```jsx
 module.exports = {
   exportPathMap: async function(defaultPathMap) {
     return {
@@ -175,7 +175,7 @@ module.exports = {
 
 Add static build script to `package.json`:
 
-```
+```json
 {
   "scripts": {
     "static": "yarn run build && next static",
@@ -200,7 +200,7 @@ If you're using Primer Components, you have to statically render CSS from primer
 
 Create file `pages/_document.js` which define low level HTML document behavior in Next.js. This file is taken drectly from Primer Repository <https://github.com/primer/components/blob/master/pages/_document.js>.
 
-```js
+```jsx
 import Document from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
 
@@ -244,7 +244,7 @@ yarn run static
 
 If you want create another page, you can create `pages/about-me.js`
 
-```js
+```jsx
 import { Box, BaseStyles } from "@primer/components";
 import Hello from '../components/Hello'
 
@@ -289,7 +289,7 @@ import { BaseStyles } from "@primer/components";
 
 and method render, where you can define your layout code. Like that menu or `<BaseStyles>`.
 
-```js
+```jsx
 render() {
   return (
     <Html>
@@ -342,7 +342,7 @@ Create `now.json`:
 
 and add script to `package.json`:
 
-```
+```json
 {
   "scripts": {
     "now-build": "yarn run static"
@@ -403,7 +403,7 @@ import nela_img from "../data/nela.jpg";
 
 And use it
 
-```js
+```jsx
 <img src={nela_img} />
 ```
 
@@ -411,7 +411,7 @@ And use it
 
 Just use require in JSX
 
-```js
+```jsx
 <img src={require('../data/nela.jpg')} />
 ```
 
