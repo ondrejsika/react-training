@@ -180,7 +180,7 @@ Add static build script to `package.json`:
 ```json
 {
   "scripts": {
-    "static": "yarn run build && next static",
+    "static": "yarn run build && next export",
   }
 }
 ```
@@ -188,7 +188,7 @@ Add static build script to `package.json`:
 Now you can build site using:
 
 ```
-yarn build static
+yarn run static
 ```
 
 And see your statically builded website in `out/`.
