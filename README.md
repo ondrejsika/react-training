@@ -1,4 +1,4 @@
-Are you interested in this course? Send me email to <ondrej@ondejsika.com> and I can run this course in your company.
+Are you interested in this course? Send me email to <ondrej@ondrejsika.com> and I can run this course in your company.
 
 # React Training
 
