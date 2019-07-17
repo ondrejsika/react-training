@@ -163,7 +163,7 @@ Restart the server (because Next.js doesn't watch for changes is `next.config.js
 
 ## Static Rendering
 
-You need to add pages you want to render statically to `next.config.js`:
+You need to add pages you want to render statically to `next.config.js`. You have to replace `module.exports = {};` with:
 
 ```jsx
 module.exports = {
