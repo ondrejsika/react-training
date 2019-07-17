@@ -311,7 +311,7 @@ render() {
 }
 ```
 
-Then, you can remove base styles from your pages.
+Then, you can remove `<BaseStyles>` components from your pages.
 
 Check it out <http://127.0.0.1:3000>
 
