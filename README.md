@@ -421,6 +421,95 @@ Just use require in JSX
 
 Now, you can check it on <http://127.0.0.1:3000>
 
+### Pages in MDX
+
+[MDX](https://mdxjs.com) is Markdown for component era - Markdown + React Components
+
+Official documentation for MDX & Next.js - <https://mdxjs.com/getting-started/next/>
+
+#### Install MDX
+
+```
+yarn add @next/mdx @mdx-js/loader
+```
+
+#### Update Next.js config
+
+Add to `module.exports` this `pageExtensions: ['js', 'jsx', 'mdx']`.
+
+It will be look like:
+
+```js
+module.exports = {
+  pageExtensions: ['js', 'jsx', 'mdx'],
+  exportPathMap: async function(defaultPathMap) {
+    return {
+      '/': { page: '/' },
+      '/about-me': { page: '/about-me' },
+    };
+  }
+};
+```
+
+And you have to add plugin for MDX to bottom of your Next.js config:
+
+```js
+const withMDX = require('@next/mdx')({})
+module.exports = withMDX(module.exports)
+```
+
+#### Create MDX page
+
+You have to create a page with `.mdx` suffix in your `pages` dir, for example `pages/mdx.mdx` whith content:
+
+```mdx
+import Hello from '../components/Hello';
+
+<Hello name='MDX!'/>
+
+This is a [Next.js](https://nextjs.org) page written in MDX (Markdown + React Components).
+
+## This is H2 Header
+
+Some text.
+
+### This is H3 Header
+
+  And some code
+```
+
+You can also add link to this page to navigation in file `pages/_document.js`:
+
+```jsx
+<a href="/">Index</a> ~ <a href="/about-me">About me</a> ~ <a href="/mdx">MDX</a>
+```
+
+And you have to add page `/mdx` to static build configuration in your Next.js config. File `next.config.js` will be look like:
+
+```js
+module.exports = {
+  pageExtensions: ['js', 'jsx', 'mdx'],
+  exportPathMap: async function(defaultPathMap) {
+    return {
+      '/': { page: '/' },
+      '/about-me': { page: '/about-me' },
+      '/mdx': { page: '/mdx' },
+    };
+  }
+};
+
+const withPages = require('@primer/next-pages/plugin')
+module.exports = withPages(module.exports)
+
+const withImages = require('next-images')
+module.exports = withImages(module.exports)
+
+const withMDX = require('@next/mdx')({})
+module.exports = withMDX(module.exports)
+```
+
+And that's it. Try `yarn run dev` and see <http://127.0.0.1:3000/mdx> or check out static build using `yarn run static`.
+
 
 ## You are almost done
 
