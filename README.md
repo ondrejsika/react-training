@@ -1,3 +1,5 @@
+> This course is not finished yet and it is under intensive development. Try on own risk ;) If you found a bug or improvement, create issue or pull request. Or let me know by email. Thanks. -- Ondrej Sika
+
 Are you interested in this course? Send me email to <ondrej@ondrejsika.com> and I can run this course in your company.
 
 # React Training
