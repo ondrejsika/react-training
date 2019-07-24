@@ -421,3 +421,11 @@ Just use require in JSX
 
 Now, you can check it on <http://127.0.0.1:3000>
 
+
+## You are almost done
+
+This course is over, but your journey continues on your own projects. Let me know, how was the cours. Send me email to <ondrej@ondrejsika.com>.
+
+If you like the course, please Tweet some recommendation with my Twitter handle [@ondrejsika](https://twitter.com/ondrejsika) or add me on LinkedIn [/in/ondrejsika](https://linkedin.com/in/ondrejsika) and write me a recomendation.
+
+In case of any questions, let me know by email.
