@@ -39,6 +39,39 @@ and fill the package info. It will be somethink like this:
 yarn add next react react-dom
 ```
 
+## Prettier
+
+We use [Prettier](https://prettier.io/) as a code formater.
+
+Install prettier as a development dependency.
+
+```
+yarn add --dev prettier
+```
+
+Install also VS Code extension for Prettier too.
+
+You can also add scripts for prettier validation & auto reformat code.
+
+```json
+{
+  "scripts": {
+    "prettier-check": "prettier -l '**/*.js'",
+    "prettier-write": "prettier --write '**/*.js'"
+  }
+}
+```
+
+You want reformat just your source code, not a node modules or minified build.
+You have to create `.prettierignore` (with same syntax as .gitignore) and specify what you want ingnore.
+
+```
+node_modules/
+out/
+.next/
+```
+
+
 ## Add Next.js scripts to `package.json`
 
 ```json
