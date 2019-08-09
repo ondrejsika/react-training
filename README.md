@@ -184,57 +184,6 @@ You can add styles using `style` property. Styles must be object, where key is c
 Check it out <http://127.0.0.1:3000>
 
 
-## Add Primer Design System
-
-Primer is design system (like Bootstrap) by Github. See <https://primer.style>
-
-
-### Install Dependencies
-
-```
-yarn add styled-components @primer/components @primer/next-pages
-```
-
-### Create Next.js Config
-
-Create a file `next.config.js`:
-
-``` js
-module.exports = {};
-
-const withPages = require('@primer/next-pages/plugin')
-module.exports = withPages(module.exports)
-```
-
-We have to use primer plugin for Next.js
-
-### Use Primer Components
-
-Import Primer Components to `pages/index.js`:
-
-``` js
-import { Box, BaseStyles } from "@primer/components";
-```
-
-Use components
-
-```jsx
-export default () => {
-  return (
-    <>
-      <BaseStyles>
-        <Box width={[1 / 2]}>
-          <Hello name="Zuz" />
-        </Box>
-      </BaseStyles>
-    </>
-  );
-};
-```
-
-Restart the server (because Next.js doesn't watch for changes is `next.config.js`) and see <http://127.0.0.1:3000>
-
-
 ## Static Rendering
 
 You need to add pages you want to render statically to `next.config.js`. You have to replace `module.exports = {};` with:
@@ -271,66 +220,15 @@ And see your statically builded website in `out/`.
 Dont forget to add the `out` to `.gitignore`.
 
 
-### Primer Components & Static Render
-
-If you're using Primer Components, you have to statically render CSS from primer components.
-
-Create file `pages/_document.js` which define low level HTML document behavior in Next.js. This file has been taken directly from Primer Repository <https://github.com/primer/components/blob/master/pages/_document.js>.
-
-```jsx
-import Document from "next/document";
-import { ServerStyleSheet } from "styled-components";
-
-export default class MyDocument extends Document {
-  static async getInitialProps(ctx) {
-    const sheet = new ServerStyleSheet();
-    const originalRenderPage = ctx.renderPage;
-
-    try {
-      ctx.renderPage = () =>
-        originalRenderPage({
-          enhanceApp: App => props => sheet.collectStyles(<App {...props} />)
-        });
-
-      const initialProps = await Document.getInitialProps(ctx);
-      return {
-        ...initialProps,
-        styles: (
-          <>
-            {initialProps.styles}
-            {sheet.getStyleElement()}
-          </>
-        )
-      };
-    } finally {
-      sheet.seal();
-    }
-  }
-}
-```
-
-Now, your pages are built properly. Try build again.
-
-```
-yarn run static
-```
-
-
 ## Second Page
 
 If you want create another page, you can create `pages/about-me.js`
 
 ```jsx
-import { Box, BaseStyles } from "@primer/components";
-
 export default () => {
   return (
     <>
-      <BaseStyles>
-        <Box width={[1 / 2]}>
-          <h1>About me</h1>
-        </Box>
-      </BaseStyles>
+      <h1>About me</h1>
     </>
   );
 };
@@ -355,40 +253,31 @@ Because you've edited Next.js config, you have to restart server.
 
 Then, check it out <http://127.0.0.1:3000/about-me>. You can also build static site.
 
-## Layout in `pages/_document.js` - Don't Repeat Yourself (DRY)
+## Layout in `pages/_app.js` - Don't Repeat Yourself (DRY)
 
-Create method `MyDocument.render` in `_pages/_document.js`:
-
-Add imports
-
-```js
-import { Html, Head, Main, NextScript } from 'next/document';
-import { BaseStyles } from "@primer/components";
-```
-
-and method render, where you can define your layout code. Like that menu or `<BaseStyles>`.
+Create file `pages/_app.js` which defines your's app layout. You can also import CSS there:
 
 ```jsx
-render() {
-  return (
-    <Html>
-      <Head />
-      <body>
-        <BaseStyles>
-          <p>
-            <a href="/">Index</a> ~ <a href="/about-me">About me</a> ~{" "}
-            <a href="/mdx">MDX</a>
-          </p>
-          <Main />
-        </BaseStyles>
-        <NextScript />
-      </body>
-    </Html>
-  );
-}
-```
+import React from "react";
+import App, { Container } from "next/app";
 
-Then, you can remove `<BaseStyles>` components from your pages.
+class MyApp extends App {
+  render() {
+    const { Component, pageProps } = this.props;
+
+    return (
+      <Container>
+        <p>
+          <a href="/">Index</a> ~ <a href="/about-me">About me</a>
+        </p>
+        <Component {...pageProps} />
+      </Container>
+    );
+  }
+}
+
+export default MyApp;
+```
 
 Check it out <http://127.0.0.1:3000>
 
@@ -554,7 +443,7 @@ Some text.
   And some code
 ```
 
-You can also add link to this page to navigation in file `pages/_document.js`:
+You can also add link to this page to navigation in file `pages/_app.js`:
 
 ```jsx
 <a href="/">Index</a> ~ <a href="/about-me">About me</a> ~ <a href="/mdx">MDX</a>
@@ -574,9 +463,6 @@ module.exports = {
     };
   }
 };
-
-const withPages = require('@primer/next-pages/plugin')
-module.exports = withPages(module.exports)
 
 const withImages = require('next-images')
 module.exports = withImages(module.exports)
