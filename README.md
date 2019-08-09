@@ -71,6 +71,25 @@ out/
 .next/
 ```
 
+If you want to check all your project files, you can use `yarn run prettier-check`.
+If you want to fix format of your js files, use `yarn run prettier-write`.
+
+You can also create __pre commit hook__ which protect you from commit unformated code into repository.
+If you want to check format before every commit, create pre commit hook by:
+
+```sh
+cat > .git/hooks/pre-commit <<EOF
+#!/bin/sh
+
+yarn run prettier-check
+
+EOF
+chmod +x .git/hooks/pre-commit
+
+```
+
+If you want to skip this validation you have to use `git commit` with `-n` or `--no-verify` parameter.
+
 
 ## Add Next.js scripts to `package.json`
 
