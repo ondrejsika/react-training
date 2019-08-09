@@ -20,6 +20,18 @@ brew install node
 brew install yarn
 ```
 
+## Init JavaScript project (package.json)
+
+Create new `package.json` by:
+
+```
+yarn init
+```
+
+and fill the package info. It will be somethink like this:
+
+![yarn init](images/yarn_init.png)
+
 
 ## Install Next.js & React
 
