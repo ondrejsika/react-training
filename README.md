@@ -539,6 +539,35 @@ module.exports = withMDX(module.exports)
 And that's it. Try `yarn run dev` and see <http://127.0.0.1:3000/mdx> or check out static build using `yarn run static`.
 
 
+## Data in JSON & YAML
+
+### JSON
+
+Create example json file `data/demo.json`:
+
+```json
+["Apple", "Orange", "Banana"]
+```
+
+You can import JSON into Next.js directly without any configuration. Just import json file like this:
+
+```jsx
+// index.json
+import json_file from "../data/example.json";
+```
+
+And use data:
+
+```jsx
+// index.json
+<h2>JSON Data</h2>
+<ul>
+  {json_file.map((el, i) => {
+    return <li key={i}>{el}</li>;
+  })}
+</ul>
+```
+
 ## You are almost done
 
 This course is over, but your journey continues on your own projects. Let me know, how was the cours. Send me email to <ondrej@ondrejsika.com>.
