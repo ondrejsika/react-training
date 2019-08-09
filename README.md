@@ -556,7 +556,7 @@ You can import JSON into Next.js directly without any configuration. Just import
 import json_file from "../data/example.json";
 ```
 
-And use data (add to `index.js`):
+And add usage of data (add to `index.js`):
 
 
 ```jsx
@@ -605,7 +605,7 @@ Just import YAML in `index.js` and use it:
 import yaml_file from "../data/example.yaml";
 ```
 
-And use data (add to `index.js`):
+And add usage of data (add to `index.js`):
 
 ```jsx
 // index.json
