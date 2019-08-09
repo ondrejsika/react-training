@@ -282,6 +282,68 @@ export default MyApp;
 Check it out <http://127.0.0.1:3000>
 
 
+## Add CSS & Bootstrap
+
+You have to install [Bootstrap](https://getbootstrap.com/) first.
+
+```
+yarn add bootstrap
+```
+
+Then you have to install & configure Next.js CSS plugin. Install it by:
+
+```
+yarn add @zeit/next-css
+```
+
+And add to bottom of `config.next.js`:
+
+```js
+const withCSS = require("@zeit/next-css");
+module.exports = withCSS(module.exports);
+```
+
+After any change in `config.next.js` you have to restart dev server.
+
+Now, you can import style to your `_app.js`. Just add import of css:
+
+```jsx
+// _app.js
+
+// Imported CSS
+import "bootstrap/dist/css/bootstrap.css";
+```
+
+Now, you can use Bootstrap, for example add conteiner into your layout in `_app.js`,
+your file will be like this:
+
+```jsx
+import React from "react";
+import App, { Container } from "next/app";
+
+// Imported CSS
+import "bootstrap/dist/css/bootstrap.css";
+
+class MyApp extends App {
+  render() {
+    const { Component, pageProps } = this.props;
+
+    return (
+      <Container>
+        <div className="container">
+          <p>
+            <a href="/">Index</a> ~ <a href="/about-me">About me</a>
+          </p>
+          <Component {...pageProps} />
+        </div>
+      </Container>
+    );
+  }
+}
+
+export default MyApp;
+```
+
 ## Deploy to zeit.co
 
 ### Install `now`
@@ -466,6 +528,9 @@ module.exports = {
 
 const withImages = require('next-images')
 module.exports = withImages(module.exports)
+
+const withCSS = require("@zeit/next-css");
+module.exports = withCSS(module.exports);
 
 const withMDX = require('@next/mdx')({})
 module.exports = withMDX(module.exports)
