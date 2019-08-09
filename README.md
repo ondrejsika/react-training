@@ -74,6 +74,8 @@ out/
 If you want to check all your project files, you can use `yarn run prettier-check`.
 If you want to fix format of your js files, use `yarn run prettier-write`.
 
+### Prettier pre commit hook
+
 You can also create __pre commit hook__ which protect you from commit unformated code into repository.
 If you want to check format before every commit, create pre commit hook by:
 
