@@ -556,13 +556,62 @@ You can import JSON into Next.js directly without any configuration. Just import
 import json_file from "../data/example.json";
 ```
 
-And use data:
+And use data (add to `index.js`):
+
 
 ```jsx
 // index.json
 <h2>JSON Data</h2>
 <ul>
   {json_file.map((el, i) => {
+    return <li key={i}>{el}</li>;
+  })}
+</ul>
+```
+
+### YAML
+
+You need a plugin for loading YAML files. You have to install it:
+
+```
+yarn add next-yaml
+```
+
+And use it in `config.next.js`, add to botom of file:
+
+```js
+// next.config.js
+
+const withYAML = require("next-yaml");
+module.exports = withYAML(module.exports);
+```
+
+and restart dev server.
+
+Create example YAML `data/example.yaml`:
+
+```yaml
+# data/example.yaml
+- Apple
+- Orange
+- Banana
+```
+
+Now, you can import & use YAML (.yaml & .yml) as JSON files described before.
+Just import YAML in `index.js` and use it:
+
+```jsx
+// index.json
+import yaml_file from "../data/example.yaml";
+```
+
+And use data (add to `index.js`):
+
+```jsx
+// index.json
+<h2>YAML Data</h2>
+<ul>
+  {yaml_file.map((el, i) => {
     return <li key={i}>{el}</li>;
   })}
 </ul>
