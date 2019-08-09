@@ -571,7 +571,7 @@ And add usage of data (add to `index.js`):
 
 ### YAML
 
-You need a plugin for loading YAML files. You have to install it:
+You need a plugin ([next-yaml](https://github.com/ondrejsika/next-yaml)) for loading YAML files. You have to install it:
 
 ```
 yarn add next-yaml
