@@ -220,6 +220,7 @@ You need to add pages you want to render statically to `next.config.js`. You hav
 
 ```jsx
 module.exports = {
+  exportTrailingSlash: true,
   exportPathMap: async function(defaultPathMap) {
     return {
       '/': { page: '/' },
@@ -319,6 +320,7 @@ You have to add that page also to `next.config.js`:
 
 ```js
 module.exports = {
+  exportTrailingSlash: true,
   exportPathMap: async function(defaultPathMap) {
     return {
       '/': { page: '/' },
@@ -494,6 +496,7 @@ It will be look like:
 ```js
 module.exports = {
   pageExtensions: ['js', 'jsx', 'mdx'],
+  exportTrailingSlash: true,
   exportPathMap: async function(defaultPathMap) {
     return {
       '/': { page: '/' },
@@ -541,6 +544,7 @@ And you have to add page `/mdx` to static build configuration in your Next.js co
 ```js
 module.exports = {
   pageExtensions: ['js', 'jsx', 'mdx'],
+  exportTrailingSlash: true,
   exportPathMap: async function(defaultPathMap) {
     return {
       '/': { page: '/' },
