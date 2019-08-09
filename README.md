@@ -57,11 +57,9 @@ yarn add next react react-dom
 File `./pages/index.js`
 
 ```jsx
-function Home() {
+export default () => {
   return <div>Welcome to Next.js!</div>;
-}
-
-export default Home;
+};
 ```
 
 
@@ -80,27 +78,27 @@ Keep running, it will be updated automatically. Try it, change the `index.js`!
 Create file `./components/Hello.js`
 
 ```jsx
-let Hello = (props) => {
-  return <>
-    <h1>Hello {props.name}</h1>
-  </>
-}
-
-export default Hello;
+export default (Hello = props => {
+  return (
+    <>
+      <h1>Hello {props.name}</h1>
+    </>
+  );
+});
 ```
 
 Use it in `index.js`
 
 ```jsx
-import Hello from '../components/Hello'
+import Hello from "../components/Hello";
 
-function Home() {
-  return <>
-    <Hello name='Zuz' />
-  </>;
-}
-
-export default Home;
+export default () => {
+  return (
+    <>
+      <Hello name="Zuz" />
+    </>
+  );
+};
 ```
 
 and check it out <http://127.0.0.1:3000>
@@ -111,14 +109,20 @@ and check it out <http://127.0.0.1:3000>
 Update our hello component like that:
 
 ```jsx
-let Hello = (props) => {
-  return <>
-    <h1 style={{
-      color: 'green',
-      backgroundColor: 'lightblue',
-    }}>Hello {props.name}</h1>
-  </>
-}
+export default props => {
+  return (
+    <>
+      <h1
+        style={{
+          color: "green",
+          backgroundColor: "lightblue"
+        }}
+      >
+        Hello {props.name}
+      </h1>
+    </>
+  );
+};
 ```
 
 You can add styles using `style` property. Styles must be object, where key is camel case name of css property and value is string with its value.
@@ -161,15 +165,17 @@ import { Box, BaseStyles } from "@primer/components";
 Use components
 
 ```jsx
-function Home() {
-  return <>
-    <BaseStyles>
-      <Box width={[1/2]}>
-        <Hello name="Zuz" />
-      </Box>
-    </BaseStyles>
-  </>;
-}
+export default () => {
+  return (
+    <>
+      <BaseStyles>
+        <Box width={[1 / 2]}>
+          <Hello name="Zuz" />
+        </Box>
+      </BaseStyles>
+    </>
+  );
+};
 ```
 
 Restart the server (because Next.js doesn't watch for changes is `next.config.js`) and see <http://127.0.0.1:3000>
@@ -217,22 +223,21 @@ If you're using Primer Components, you have to statically render CSS from primer
 Create file `pages/_document.js` which define low level HTML document behavior in Next.js. This file has been taken directly from Primer Repository <https://github.com/primer/components/blob/master/pages/_document.js>.
 
 ```jsx
-import Document from 'next/document'
-import { ServerStyleSheet } from 'styled-components'
-
+import Document from "next/document";
+import { ServerStyleSheet } from "styled-components";
 
 export default class MyDocument extends Document {
-  static async getInitialProps (ctx) {
-    const sheet = new ServerStyleSheet()
-    const originalRenderPage = ctx.renderPage
+  static async getInitialProps(ctx) {
+    const sheet = new ServerStyleSheet();
+    const originalRenderPage = ctx.renderPage;
 
     try {
       ctx.renderPage = () =>
         originalRenderPage({
           enhanceApp: App => props => sheet.collectStyles(<App {...props} />)
-        })
+        });
 
-      const initialProps = await Document.getInitialProps(ctx)
+      const initialProps = await Document.getInitialProps(ctx);
       return {
         ...initialProps,
         styles: (
@@ -241,9 +246,9 @@ export default class MyDocument extends Document {
             {sheet.getStyleElement()}
           </>
         )
-      }
+      };
     } finally {
-      sheet.seal()
+      sheet.seal();
     }
   }
 }
@@ -262,17 +267,19 @@ If you want create another page, you can create `pages/about-me.js`
 
 ```jsx
 import { Box, BaseStyles } from "@primer/components";
-import Hello from '../components/Hello'
 
 export default () => {
-  return <>
-    <BaseStyles>
-      <Box width={[1/2]}>
-        <h1>About me</h1>
-      </Box>
-    </BaseStyles>
-  </>;
-}
+  return (
+    <>
+      <BaseStyles>
+        <Box width={[1 / 2]}>
+          <h1>About me</h1>
+        </Box>
+      </BaseStyles>
+    </>
+  );
+};
+
 ```
 
 You have to add that page also to `next.config.js`:
@@ -309,12 +316,12 @@ and method render, where you can define your layout code. Like that menu or `<Ba
 render() {
   return (
     <Html>
-      <Head>
-      </Head>
+      <Head />
       <body>
         <BaseStyles>
           <p>
-            <a href="/">Index</a> ~ <a href="/about-me">About me</a>
+            <a href="/">Index</a> ~ <a href="/about-me">About me</a> ~{" "}
+            <a href="/mdx">MDX</a>
           </p>
           <Main />
         </BaseStyles>
