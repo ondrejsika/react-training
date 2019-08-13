@@ -20,6 +20,42 @@ brew install node
 brew install yarn
 ```
 
+## Gitignore & Editor Config
+
+Before you start, you have to setup two things. Gitignore and Editor config. Why?
+
+### Gitignore
+
+You probably want to use Git. If your directory contain some files you don't want to manage using git, you have to ceate `.gitignote` and specify them there.
+
+```gitignore
+# .gitignore
+node_modules
+.next
+out
+.vscode
+.DS_Store
+```
+
+If you want to know more about Git, check out my [Git Training](https://github.com/ondrejsika/git-training).
+
+### Editor Config
+
+Editor config is a file wich set up your editor to formatting standart defined in `.editorconfig` file. You can chose tabs or spaces, ident size and much more. Here is my basic config:
+
+```editorconfig
+# .editorconfig
+root = true
+[*]
+indent_style = space
+indent_size = 2
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+end_of_line = lf
+max_line_length = null
+```
+
 ## Init JavaScript project (package.json)
 
 Create new `package.json` by:
