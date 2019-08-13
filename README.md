@@ -193,6 +193,102 @@ export default () => {
 
 and check it out <http://127.0.0.1:3000>
 
+## Basic Construct in JSX
+
+You can write any javascript code inside `{}` in JSX (javascript with React components), but you have to put it into function.
+
+### Conditions (If)
+
+Instead of this:
+
+```jsx
+// pages/index.js
+// NOT working example
+import Hello from "../components/Hello";
+
+export default () => {
+  let name = "Zuz";
+  return (
+    <>
+      {
+        if (name) {
+          <Hello name="Zuz" />
+        }
+        else {
+          <h1>Hello unknown</h1>
+        }
+      }
+    </>
+  );
+};
+```
+
+You have to put your JS code into function and call it.
+
+```jsx
+<>
+  {(()=>{
+    return ...
+  })()}
+</>
+```
+
+Your file will be like this.
+
+```jsx
+// pages/index.js
+import Hello from "../components/Hello";
+
+export default () => {
+  let name = "Zuz";
+  return (
+    <>
+      {(() => {
+        if (name) {
+          return <Hello name={name} />;
+        }
+        else {
+          return <h1>Hello unknown</h1>
+        }
+      })()}
+    </>
+  );
+};
+```
+
+### Multiple conditions
+
+If you have more than one condition, it will be hard to that this way. You can create array and append components you want to render and then, return whole array (and will be rendered).
+
+Create the example file `pages/multiple-if.js`:
+
+```jsx
+// pages/multiple-if.js
+export default () => {
+  let count = 2;
+  return (
+    <>
+      {(() => {
+        let out = [];
+        if (count >= 1) {
+          out.push(<h1>H1</h1>);
+        }
+        if (count >= 2) {
+          out.push(<h2>H2</h2>);
+        }
+        if (count >= 3) {
+          out.push(<h3>H3</h3>);
+        }
+        return out;
+      })()}
+    </>
+  );
+};
+```
+
+and see <http://127.0.0.1:3000/multiple-if>
+
+### Loops
 
 ## Add Styles to Component
 
