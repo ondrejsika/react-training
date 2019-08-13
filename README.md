@@ -290,6 +290,29 @@ and see <http://127.0.0.1:3000/multiple-if>
 
 ### Loops
 
+You can loop array very simply, like this:
+
+```jsx
+// pages/loops.js
+export default () => {
+  let fruits = ["orange", "apple", "banana"];
+  return (
+    <>
+      <ul>
+        {(() => {
+          return fruits.map((el, i) => {
+            return <li key={i}>{el}</li>;
+          });
+        })()}
+      </ul>
+    </>
+  );
+};
+```
+
+See <http://127.0.0.1:3000/loops>
+
+
 ## Add Styles to Component
 
 Update our hello component like that:
