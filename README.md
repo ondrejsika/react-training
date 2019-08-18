@@ -69,12 +69,6 @@ and fill the package info. It will be somethink like this:
 ![yarn init](images/yarn_init.png)
 
 
-## Install Next.js & React
-
-```
-yarn add next react react-dom
-```
-
 ## Prettier
 
 We use [Prettier](https://prettier.io/) as a code formater.
@@ -128,6 +122,12 @@ chmod +x .git/hooks/pre-commit
 
 If you want to skip this validation you have to use `git commit` with `-n` or `--no-verify` parameter.
 
+
+## Install Next.js & React
+
+```
+yarn add next react react-dom
+```
 
 ## Add Next.js scripts to `package.json`
 
