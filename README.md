@@ -451,14 +451,14 @@ Then you have to install & configure Next.js CSS plugin. Install it by:
 yarn add @zeit/next-css
 ```
 
-And add to bottom of `config.next.js`:
+And add to bottom of `next.config.js`:
 
 ```js
 const withCSS = require("@zeit/next-css");
 module.exports = withCSS(module.exports);
 ```
 
-After any change in `config.next.js` you have to restart dev server.
+After any change in `next.config.js` you have to restart dev server.
 
 Now, you can import style to your `_app.js`. Just add import of css:
 
@@ -732,7 +732,7 @@ You need a plugin ([next-yaml](https://github.com/ondrejsika/next-yaml)) for loa
 yarn add next-yaml
 ```
 
-And use it in `config.next.js`, add to botom of file:
+And use it in `next.config.js`, add to botom of file:
 
 ```js
 // next.config.js
