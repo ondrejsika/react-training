@@ -129,6 +129,12 @@ If you want to skip this validation you have to use `git commit` with `-n` or `-
 yarn add next react react-dom
 ```
 
+Install TypeScript
+
+```
+yarn add --dev typescript @types/react @types/node
+```
+
 ## Add Next.js scripts to `package.json`
 
 ```json
