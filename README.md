@@ -171,16 +171,22 @@ Keep running, it will be updated automatically. Try it, change the `index.js`!
 
 ## Create Simple Component
 
-Create file `./components/Hello.js`
+Create file `./components/Hello.tsx`
 
-```jsx
-export default (Hello = props => {
-  return (
-    <>
-      <h1>Hello {props.name}</h1>
-    </>
-  );
-});
+```tsx
+import React, { FunctionComponent } from "react";
+
+type HelloProps = {
+  name: string;
+};
+
+const Hello: FunctionComponent<HelloProps> = ({ name }) => (
+  <div>
+    <h1>Hello {name}</h1>
+  </div>
+);
+
+export default Hello;
 ```
 
 Use it in `index.js`
